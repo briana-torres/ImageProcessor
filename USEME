@@ -1,0 +1,63 @@
+Instructions
+
+- When typing in user input into the program the controller can read a line of 3-4 inputs with spaces in between.
+- All inputs are case-insensitive
+- To quit the program simply type "quit" on its own line (case-insensitive)
+- All command lines MUST be 3-4 inputs long or "quit", or the program will do nothing while waiting for more inputs
+- If an invalid command is entered the program will display "Invalid command please try again"
+
+Valid 3 Input Command Lines
+- "load image-path image-name"
+- Load an image from the specified path and refer it to henceforth in the program by the given image name.
+
+- "save image-path image-name"
+- Save the image with the given name to the specified path which should include the name of the file.
+
+- "red-component image-name dest-image-name"
+- Create a greyscale image with the red-component of the image with the given name, and refer to it henceforth in the
+- program by the given destination name. Similar commands for green, blue, value, luma, intensity are also supported
+- in the same format of the keyword-component as the first input.
+
+- "horizontal-flip image-name dest-image-name"
+- Flip an image horizontally to create a new image, referred to henceforth by the given destination name.
+
+- "vertical-flip image-name dest-image-name"
+- Flip an image vertically to create a new image, referred to henceforth by the given destination name.
+
+- "blur image-name dest-image-name"
+- Create a blurred image with the given name, and refer to it henceforth in the program by the given destination name.
+
+- "sharpen image-name dest-image-name"
+- Create a sharpened image with the given name, and refer to it henceforth in the program by the given destination name.
+
+- "sepia image-name dest-image-name"
+- Create a sepia-toned image with the given name,
+- and refer to it henceforth in the program by the given destination name.
+
+- "greyscale image-name dest-image-name"
+- Create a greyscale image with the given name, and refer to it henceforth in the program by the given destination name.
+
+Valid 4 Input Command Lines
+- "brighten increment image-name dest-image-name"
+- Brighten the image by the given increment to create a new image, referred to henceforth by the given destination name.
+- The increment must be positive and the new RGB values will be capped at 255
+
+- "darken increment image-name dest-image-name"
+- Darken the image by the given increment to create a new image, referred to henceforth by the given destination name.
+- The increment must be positive and the new RGB values will be capped at 0
+
+Valid 1 Input Command Lines
+- "quit"
+- Immediately quits the program
+
+GUI Instructions
+
+- Click the load button to be prompted to select a file
+- Choose your file and open it
+- The loaded image and its histograms will appear on the screen
+- Then select what edits you would like to apply to your image from the drop-down menu
+- After selecting the desired edit click the apply button
+- The changed image and its histograms will appear on the screen
+- Whenever you are done editing the image click the save button
+- You will be prompted to name your file and select a location to save it to
+- Click save

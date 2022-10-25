@@ -1,0 +1,96 @@
+
+This program allows for a user to load, process, and save images.
+
+Model
+
+- Our model consists of three different Interfaces: ImageProcessor, Image, and Pixel.
+- Each interface is implemented by a class used to create objects that can use the methods defined in the interfaces.
+- Our ImageProcessorImpl class stores Image objects in an HashMap directory and has two methods.
+- One that saves an image under the given name in the directory.
+- And another that returns the image that matches the given name.
+- Our ImageImpl class creates new Image object that represents a PPM file.
+- Each object has a width, height, max pixel value, and a 2D arraylist of Pixel objects.
+- The methods inside the class consist of getters for every field.
+- The ability to change the image to greyscale using the red, green, blue, value, intensity, and luma components.
+- The ability to flip the image vertically and horizontally.
+- The ability to darken and brighten the image.
+- And a method to update the max pixel value after any of the methods have been applied.
+- Our PixelImpl class creates a new Pixel object that has a red, green, and blue value.
+- The methods inside the class consist of getters for the RGB values.
+- Methods that return the value, intensity, and luma components of a pixel.
+- The ability to change the RGB values.
+- And a clone method to create a copy of a pixel.
+
+Model Design Changes
+
+- Added two packages ColorTransformation and Filter to supports color transformations and filters on image objects.
+- In ColorTransformation added an interface that with a transform method to create a new image object.
+- This is done by multiplying a 3x3 matrix with the rgb values of every pixel in the given image.
+- Created an abstract class that implements the interface to contain the code and constructor
+- This is done because the code itself is repeated across all color transformations with only the matrix changing
+- Then to create each type of color transformation, add a new class that extends the abstract class
+- Then the only changed code is the given matrix to the super constructor
+- This is how Sepia and Greyscale are done
+- Same concept with filters, an interface with a generic filter method to create a new filtered image object
+- An abstract class to contain the code for all filter applications using a float[] matrix
+- Then the only changed code is the given float[] matrix and dimensions to the super constructor
+
+
+View
+
+- Our view has only one interface: ImageView.
+- Which simply has a method to render a given message from the user.
+- The ImageViewImpl constructor takes in an ImageProcessor object and an Appendable as its destination for the message.
+
+
+Controller
+
+- Our controller also has only one interface: ImageController.
+- The ImageControllerImpl constructor takes in three parameters:
+- An ImageProcessor to store the images.
+- An ImageView to render messages.
+- And an Readable input.
+- The class supports three methods: load, save, and process.
+- Load takes in a PPM file path, creates a new Image object, and stores it in the directory under the given name.
+- Save will search the directory for the given image name and create a new PPM file with the image object returned.
+- Finally the process method simply runs the program.
+- And delegates to the controller what to do with the model based on the user commands.
+
+Controller Design Changes
+
+- Added a class called Converter that has two methods
+- One to convert from an image object to a buffered image
+- And one to convert from a buffered image to an image object
+- This method is extended by two classes ImageControllerImpl and AbstractFilter to use these methods
+- In the ImageControllerImpl more switch cases were added to check for new commands blur, sharpen, sepia, and greyscale
+- More helpers were added to handle the saving and loading of different file types
+- More helpers were added to delegate to the controller what to do with each command
+- Extended the controller with the ActionListener class
+- This was done to receive user action from the view
+- Helper methods were added to modify the view after changes were made by the controller
+
+Main
+
+This class only contains a main method used to call the process method on new controller.
+
+Main Design Changes
+
+- A helper method was added to check if a text file was given in the args and to then read from it if true
+- Defaults to System.in if nothing
+- In the main method an if statement was added to check the command line argument
+- If "-text" was entered then the program opens in an interactive text mode
+- If anything else is entered the program returns an error message
+- Otherwise the program opens the graphical user interface
+
+View Design Changes
+
+- A Histogram class was added to create JPanels that display a histogram representing an image
+- Code added in the constructor to create a graphical user interface
+- Public methods added into the interface to update the various components of the GUI
+
+
+All the parts of the program are complete.
+
+Copying / License
+
+All images found in the res file are owned by the authors and are authorized for use.

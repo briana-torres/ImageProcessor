@@ -1,0 +1,16 @@
+load res/images/Test.ppm Test
+red-component Test Test-GreyScale-Red
+green-component Test Test-GreyScale-Green
+blue-component Test Test-GreyScale-Blue
+value-component Test Test-GreyScale-Value
+intensity-component Test Test-GreyScale-Intensity
+luma-component Test Test-GreyScale-Luma
+vertical-flip Test Test-Flip-Vertical
+horizontal-flip Test Test-Flip-Horizontal
+brighten 50 Test Test-Brighten
+darken 50 Test Test-Darken
+blur Test Test-Blur
+sharpen Test Test-Sharpen
+greyscale Test Test-Greyscale
+sepia Test Test-Sepia
+save res/images/Test-Sepia-Text-File.ppm Test-Sepia
